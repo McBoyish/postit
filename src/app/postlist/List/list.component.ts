@@ -10,11 +10,27 @@ import { HttpClient } from '@angular/common/http';
 export class ListComponent {
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.http.get('http://localhost:8080/post').subscribe((res) => {
-      this.posts = res as Post[];
-    });
-  }
+  currentPage: number = 0;
+
+  hasMorePage: boolean = false;
 
   posts: Post[] = [];
+
+  requestPage(page: number) {
+    this.http
+      .post('http://localhost:8080/post/find-all', { page, pageSize: 1 })
+      .subscribe((res: any) => {
+        this.posts = [...this.posts, ...res.content];
+        this.hasMorePage = !res.last;
+      });
+  }
+
+  ngOnInit() {
+    this.requestPage(this.currentPage);
+  }
+
+  loadMore() {
+    this.currentPage++;
+    this.requestPage(this.currentPage);
+  }
 }

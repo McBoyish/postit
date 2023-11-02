@@ -18,7 +18,7 @@ export class AddPostFormComponent {
   }
   addPost(dummy: string) {
     this.http
-      .post('http://localhost:8080/post', {
+      .post('http://localhost:8080/post/save', {
         title: this.title,
         content: this.content,
         imgUrl: '',
