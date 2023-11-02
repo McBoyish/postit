@@ -1,3 +1,7 @@
-<button class="button" (click)="addPostEvent.emit()" [disabled]="disabled">
+<button
+  class="button"
+  (click)="addPostEvent.emit('dummy')"
+  [disabled]="disabled"
+>
   Add new post
 </button>

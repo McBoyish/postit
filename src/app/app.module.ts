@@ -4,10 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostListModule } from './postlist/postlist.module';
 import { AddPostModule } from './addpost/addpost.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PostListModule, AddPostModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    PostListModule,
+    AddPostModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

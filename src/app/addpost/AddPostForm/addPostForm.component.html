@@ -14,6 +14,6 @@
   [value]="content"
 ></textarea>
 <app-add-post-button
-  (addPostEvent)="addPost()"
+  (addPostEvent)="addPost($event)"
   [disabled]="title === '' || content === ''"
 />
