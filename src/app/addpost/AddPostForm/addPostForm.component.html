@@ -1,0 +1,19 @@
+<input
+  class="input-title"
+  type="text"
+  placeholder="Title"
+  [value]="title"
+  (input)="setTitle($any($event).target.value)"
+/>
+<textarea
+  class="input-content"
+  (input)="setContent($any($event).target.value)"
+  type="text"
+  multiple
+  placeholder="Write your message"
+  [value]="content"
+></textarea>
+<app-add-post-button
+  (addPostEvent)="addPost()"
+  [disabled]="title === '' || content === ''"
+/>
