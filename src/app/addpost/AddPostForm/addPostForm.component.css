@@ -27,3 +27,20 @@
   margin-top: 10px;
   height: 100px;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  display: flex;
+  border-style: solid;
+  border-color: black;
+  justify-self: flex-start;
+  border-width: 1px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}

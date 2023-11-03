@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface Post {
   id: number;
@@ -13,9 +14,11 @@ export interface Post {
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent {
+  constructor(private router: Router) {}
+
   @Input() post!: Post;
 
   openPost() {
-    // redirect to post
+    this.router.navigate(['post', this.post.id]);
   }
 }

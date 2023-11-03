@@ -16,4 +16,12 @@
   border-width: 1px;
   padding: 5px;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: left;
 }

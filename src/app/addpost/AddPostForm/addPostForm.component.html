@@ -13,7 +13,10 @@
   placeholder="Write your message"
   [value]="content"
 ></textarea>
-<app-add-post-button
-  (addPostEvent)="addPost($event)"
-  [disabled]="title === '' || content === ''"
-/>
+<div class="button-container">
+  <app-add-post-button
+    (addPostEvent)="addPost($event)"
+    [disabled]="title === '' || content === ''"
+  />
+  <button (click)="cancel()" class="button">Cancel</button>
+</div>

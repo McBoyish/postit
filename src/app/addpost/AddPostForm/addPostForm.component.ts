@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { PostService } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post-form',
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./addPostForm.component.css'],
 })
 export class AddPostFormComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private postService: PostService, private router: Router) {}
   title: string = '';
   content: string = '';
   setTitle(title?: string) {
@@ -17,13 +18,14 @@ export class AddPostFormComponent {
     this.content = content || '';
   }
   addPost(dummy: string) {
-    this.http
-      .post('http://localhost:8080/post/save', {
-        title: this.title,
-        content: this.content,
-        imgUrl: '',
-      })
-      .subscribe();
+    this.postService.addPost(this.title, this.content, '').subscribe(() => {
+      this.router.navigate(['/home']);
+    });
+    this.title = '';
+    this.content = '';
+  }
+  cancel() {
+    this.router.navigate(['home']);
     this.title = '';
     this.content = '';
   }

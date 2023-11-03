@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from '../Post/post.component';
-import { HttpClient } from '@angular/common/http';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private postService: PostService) {}
 
   currentPage: number = 0;
 
@@ -17,12 +17,10 @@ export class ListComponent {
   posts: Post[] = [];
 
   requestPage(page: number) {
-    this.http
-      .post('http://localhost:8080/post/find-all', { page, pageSize: 1 })
-      .subscribe((res: any) => {
-        this.posts = [...this.posts, ...res.content];
-        this.hasMorePage = !res.last;
-      });
+    this.postService.getPosts(page, 30).subscribe((res) => {
+      this.posts = [...this.posts, ...res.content];
+      this.hasMorePage = !res.last;
+    });
   }
 
   ngOnInit() {
