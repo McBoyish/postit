@@ -1,22 +1,29 @@
-<input
-  class="input-title"
-  type="text"
-  placeholder="Title"
-  [value]="title"
-  (input)="setTitle($any($event).target.value)"
-/>
-<textarea
-  class="input-content"
-  (input)="setContent($any($event).target.value)"
-  type="text"
-  multiple
-  placeholder="Write your message"
-  [value]="content"
-></textarea>
+<span class="title">Create a new post</span>
+<mat-form-field class="input-title">
+  <input
+    matInput
+    type="text"
+    placeholder="Title"
+    [value]="title"
+    (input)="setTitle($any($event).target.value)"
+  />
+</mat-form-field>
+<mat-form-field class="input-content">
+  <textarea
+    matInput
+    style="resize: none"
+    rows="5"
+    (input)="setContent($any($event).target.value)"
+    type="text"
+    multiple
+    placeholder="Write your message"
+    [value]="content"
+  ></textarea>
+</mat-form-field>
 <div class="button-container">
   <app-add-post-button
     (addPostEvent)="addPost($event)"
     [disabled]="title === '' || content === ''"
   />
-  <button (click)="cancel()" class="button">Cancel</button>
+  <button mat-raised-button (click)="cancel()" class="button">Cancel</button>
 </div>

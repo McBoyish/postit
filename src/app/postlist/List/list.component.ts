@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Post } from '../Post/post.component';
 import { PostService } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +9,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   currentPage: number = 0;
 
@@ -30,5 +31,9 @@ export class ListComponent {
   loadMore() {
     this.currentPage++;
     this.requestPage(this.currentPage);
+  }
+
+  redirectToAddPost() {
+    this.router.navigate(['add-post']);
   }
 }

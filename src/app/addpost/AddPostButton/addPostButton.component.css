@@ -4,10 +4,5 @@
 
 .button {
   display: flex;
-  border-style: solid;
-  border-color: black;
   justify-self: flex-start;
-  border-width: 1px;
-  padding: 5px;
-  margin-top: 10px;
 }
