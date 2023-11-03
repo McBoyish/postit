@@ -18,6 +18,8 @@ export class PostComponent {
 
   @Input() post!: Post;
 
+  displayContent: string = this.post?.content.slice(0, 100);
+
   openPost() {
     this.router.navigate(['post', this.post.id]);
   }

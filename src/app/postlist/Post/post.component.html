@@ -1,4 +1,9 @@
 <div class="container" (click)="openPost()">
   <span class="title">{{ post.title }}</span>
-  <span class="content">{{ post.content }}</span>
+  <span *ngIf="post.content.length > 300" class="content">{{
+    post.content.slice(0, 300) + "..."
+  }}</span>
+  <span *ngIf="post.content.length <= 300" class="content">{{
+    post.content
+  }}</span>
 </div>
