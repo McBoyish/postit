@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../postlist/Post/post.component';
-import { Observable, Subject } from 'rxjs';
 
 interface GetPostsResponse {
   content: Post[];
@@ -26,7 +25,7 @@ export class PostService {
   }
 
   addPost(title: string, content: string, imgUrl: string) {
-    return this.http.post('http://localhost:8080/post/save', {
+    return this.http.post<Post>('http://localhost:8080/post/save', {
       title,
       content,
       imgUrl,

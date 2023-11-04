@@ -1,1 +1,39 @@
-<div>{{ post?.title }}</div>
+<mat-card *ngIf="post !== null" class="post-container">
+  <mat-card-header class="post-title">{{ post.title }}</mat-card-header>
+  <mat-card-content class="post-content">{{ post.content }}</mat-card-content>
+</mat-card>
+<mat-form-field class="input-comment">
+  <textarea
+    style="resize: none"
+    matInput
+    rows="3"
+    type="text"
+    placeholder="Write your comment"
+    [value]="comment"
+    (input)="setComment($any($event).target.value)"
+  ></textarea>
+</mat-form-field>
+<div class="button-container">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addComment()"
+    [disabled]="comment === ''"
+  >
+    Add comment
+  </button>
+</div>
+<mat-card class="comment-container" *ngFor="let comment of comments">
+  <mat-card-content class="comment-content">
+    {{ comment.content }}
+  </mat-card-content>
+</mat-card>
+<button
+  *ngIf="hasMoreComments === true"
+  mat-raised-button
+  (click)="fetchMore()"
+  color="primary"
+  class="button-load-more"
+>
+  Load more
+</button>
