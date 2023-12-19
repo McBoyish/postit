@@ -1,9 +1,21 @@
-<mat-card appearance="raised" class="container" (click)="openPost()">
-  <mat-card-header class="title">{{ post.title }}</mat-card-header>
-  <mat-card-content *ngIf="post.content.length > 300" class="content">{{
-    post.content.slice(0, 300) + "..."
-  }}</mat-card-content>
-  <mat-card-content *ngIf="post.content.length <= 300" class="content">{{
-    post.content
-  }}</mat-card-content>
+<mat-card appearance="raised" class="container">
+  <mat-card-header class="title" (click)="openPost()">{{
+    post.title
+  }}</mat-card-header>
+  <mat-card-content
+    *ngIf="post.content.length > 300"
+    class="content"
+    (click)="openPost()"
+    >{{ post.content.slice(0, 300) + "..." }}</mat-card-content
+  >
+  <mat-card-content
+    *ngIf="post.content.length <= 300"
+    class="content"
+    (click)="openPost()"
+    >{{ post.content }}</mat-card-content
+  >
+  <mat-card-actions [align]="'end'" class="likeButtonContainer">
+    <button mat-button>Like</button>
+    <span>800</span>
+  </mat-card-actions>
 </mat-card>

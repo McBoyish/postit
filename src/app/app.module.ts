@@ -18,6 +18,7 @@ import { PostModule } from './post/post.module';
     AppRoutingModule,
     PostListModule,
     AddPostModule,
+    PostModule,
     HttpClientModule,
   ],
   providers: [PostService, CommentService],
